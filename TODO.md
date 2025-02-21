@@ -1,0 +1,32 @@
+# TODO
+* Start Page
+  - Logo
+  - Spelling Bee
+  - Subtitle
+  - Play Btn
+* Game Page
+  - Ranking Status (Beginner, Getting Started, etc)
+    - (on click) Rankings Modal
+      - Title
+      - Subtitle
+      - Tank Table
+      - Current Rank w/ Points till next & points till Genius
+  - Your words... OR Most Recent words (dropdown)
+    - You have found x words (default)
+    - columns of words
+  - Board
+    - toaster message & points
+    - word display
+      - flashing cursor ugh
+      - highlight required letter
+    - circle of letters (7 letters & 1 is required)
+    - buttons
+      - Delete (letter)
+      - Refresh
+      - Enter
+* Scoreboard (once Genius is reached)
+    - Congrats Message
+    - Total # of words found
+    - Total Points
+    - Continue btn (until all words are found)  
+* Work out Point System
