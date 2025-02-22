@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Start = () => {
+const Start = ({ startGame }) => {
   return (
     <div id="start">
       <div className="logo">
@@ -9,7 +9,7 @@ const Start = () => {
       <h1 className="title">Spelling Bee</h1>
       <h2 className="subtitle">How many words can you make with 7 letters?</h2>
       <div className="btn-container">
-        <div className="btn" onClick={() => console.log("play")}>
+        <div className="btn" onClick={() => startGame()}>
           Play
         </div>
       </div>

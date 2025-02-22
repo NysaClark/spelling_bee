@@ -1,10 +1,10 @@
 # TODO
-* Start Page
-  - Logo
-  - Spelling Bee
-  - Subtitle
-  - Play Btn
-* Game Page
+- &#x2610; Start Page
+  - &#x2610; Logo
+  - &#x2612; Spelling Bee
+  - &#x2612; Subtitle
+  - &#x2612; Play Btn
+- &#x2610; Game Page
   - Ranking Status (Beginner, Getting Started, etc)
     - (on click) Rankings Modal
       - Title
@@ -24,9 +24,9 @@
       - Delete (letter)
       - Refresh
       - Enter
-* Scoreboard (once Genius is reached)
+[] Scoreboard (once Genius is reached)
     - Congrats Message
     - Total # of words found
     - Total Points
     - Continue btn (until all words are found)  
-* Work out Point System
+[] Work out Point System
