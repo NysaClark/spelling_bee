@@ -17,7 +17,6 @@ function App() {
     setLoading(true);
 
 
-
     setShowGame(true);
     setLoading(false);
   };
