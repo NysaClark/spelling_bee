@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
+import RankModal from './RankModal'
 
 const RankStatus = ({ currPoints, currRank }) => {
+  const [showModal, setShowModal] = useState(false)
   const ranks = {
     "beginner": {
       id: 0,
@@ -41,7 +43,8 @@ const RankStatus = ({ currPoints, currRank }) => {
   }
 
   return (
-    <div id='rankStatus'>
+    <div id='rankStatus' onClick={() => setShowModal(true)}>
+      {showModal && <RankModal setShowModal={setShowModal} currPoints={currPoints} currRank={currRank} ranks={ranks} /> }
       <h3 id='currRank'>{currRank}</h3>
       <div className="progressBar">
         {Object.keys(ranks).map((rank) => {

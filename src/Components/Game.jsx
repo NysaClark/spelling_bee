@@ -4,14 +4,12 @@ import WordList from './Game/WordList'
 import Board from './Game/Board'
 
 const Game = () => {
-  const [currRank, setCurrRank] = useState("good");
-  const [currPoints, setCurrPoints] = useState(11);
+  const [currRank, setCurrRank] = useState("genius");
+  const [currPoints, setCurrPoints] = useState(65);
 
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   const [wordsFound, setWordsFound] = useState([
-    "thorn",
-    "thrill",
   ])
 
   return (

@@ -109,8 +109,155 @@
   align-items: center;
   gap: 2rem;
   margin: 0 0.5rem;
+  cursor: pointer;
 }
 
+/* RANKING MODAL */
+
+#rankStatus .modal {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: 100;
+  cursor: default;
+}
+
+.modal #rankModal {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2rem;
+  position: relative;
+
+  max-width: 70vw;
+}
+
+#rankModal .close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+
+#rankModal .title {
+  padding-bottom: 0.5rem;
+}
+table#ranking {
+  border-spacing: 0 10px;
+  /* position: relative; */
+}
+
+table#ranking .minScore {
+  text-align: end;
+  width: fit-content;
+}
+table#ranking .rank {
+  text-align: start;
+  padding-left: 1rem;
+}
+
+table#ranking .currRank td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* table#ranking td {
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+} */
+table#ranking .currRank #icon{
+  font-size: 1.2rem;
+  padding-left: .5rem;
+}
+
+table#ranking .currRank .rank :first-child {
+  font-weight: bold;
+}
+
+table#ranking tbody {
+  position: relative;
+}
+
+table#ranking tbody::before {
+  content: "";
+  width: 1px;
+  height: calc(100% - 25px);
+  background-color: #cecece;
+  z-index: 0;
+  position: absolute;
+  top: 20px;
+  left: 4.5px;
+}
+
+table#ranking .progress::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #cecece;
+  font-size: 0.8rem;
+  z-index: 1;
+  position: absolute;
+}
+table#ranking .progress.square::before {
+  border-radius: 0%;
+}
+table#ranking .progress.filled::before {
+  background-color: #f7da21;
+}
+
+table#ranking .currRank {
+  position: relative;
+  background-color: #f7da21;
+  z-index: 0;
+  height: 55px;
+}
+
+table#ranking .currRank .progress.filled{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+table#ranking .row.faded .rank, table#ranking .row.faded .minScore{
+  opacity: .3;
+}
+
+table#ranking .currRank .progress.filled::before {
+  content: "";
+  z-index: -1;
+  border-radius: 50%;
+  left: -25px;
+  top: 0;
+  position: absolute;
+  width: 55px;
+  height: 100%;
+}
+
+table#ranking .currRank .minScore::after {
+  content: "";
+  z-index: -1;
+  border-radius: 50%;
+  right: -25px;
+  top: 0;
+  position: absolute;
+  width: 55px;
+  height: 100%;
+  background-color: #f7da21;
+}
+
+table#ranking .rank div:first-child {
+  text-transform: capitalize;
+  width: fit-content;
+}
+
+/* RANK STATUS */
 #rankStatus #currRank {
   text-transform: capitalize;
   min-width: fit-content;
@@ -178,7 +325,7 @@
   /* padding: 0 1rem 0 0; */
 }
 
-#wordList .listPreview{
+#wordList .listPreview {
   display: flex;
   flex-wrap: wrap;
   height: 1.5rem;
@@ -210,34 +357,34 @@
   align-content: start;
 }
 
-#wordList .list .word{
+#wordList .list .word {
   /* margin: .5rem 0; */
   text-transform: capitalize;
   /* width: fit-content; */
   width: calc(33.33% - 2rem);
-  border-bottom: 1px solid #CECECE;
+  border-bottom: 1px solid #cecece;
 }
 
 /* TODO */
 /* SCROLL WHEN LIST EXCEEDS # COLUMNS */
 
-@media screen and (max-width: 768px){
-  #container{
+@media screen and (max-width: 768px) {
+  #container {
     padding: 0;
   }
-  #game{
+  #game {
     justify-content: start;
     flex-direction: column;
     overflow: hidden;
     gap: 0;
     padding: 0;
   }
-  #game .section{
+  #game .section {
     width: 100%;
     height: fit-content;
   }
 
-  #wordList.expanded{
+  #wordList.expanded {
     height: calc(100vh - 100px);
   }
 }

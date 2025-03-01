@@ -5,15 +5,15 @@
   - &#x2612; Subtitle
   - &#x2612; Play Btn
 - &#x2610; Game Page
-  - Ranking Status (Beginner, Getting Started, etc)
-    - (on click) Rankings Modal
-      - Title
-      - Subtitle
-      - Tank Table
-      - Current Rank w/ Points till next & points till Genius
-  - Your words... OR Most Recent words (dropdown)
-    - You have found x words (default)
-    - columns of words
+  - &#x2610; Ranking Status (Beginner, Getting Started, etc)
+    - &#x2610; (on click) Rankings Modal
+      - &#x2610; Title
+      - &#x2610; Subtitle
+      - &#x2610; Tank Table
+      - &#x2610; Current Rank w/ Points till next & points till Genius
+    - &#x2612; Your words... OR Most Recent words (dropdown)
+      - &#x2612; You have found x words (default)
+      - &#x2612; columns of words
   - Board
     - toaster message & points
     - word display
