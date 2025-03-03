@@ -4,7 +4,7 @@ const WordList = ({ setExpanded, expanded, wordsFound }) => {
   return (
     <div id='wordList' className={expanded ? "expanded" : ""}>
       <div className="header" onClick={() => setExpanded(!expanded)}>
-        {(!expanded && wordsFound.length === 0) && <div className="placeholder">Your words...</div>}
+        {(!expanded && wordsFound.length === 0) && <div className="placeholder">Your words ...</div>}
 
         {(expanded) && <div className="wordCount">You have found {wordsFound.length} word{wordsFound.length === 0 || wordsFound.length > 1 ? "s" : ""}</div>}
 

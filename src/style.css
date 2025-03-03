@@ -326,6 +326,10 @@ table#ranking .rank div:first-child {
   cursor: pointer;
 }
 
+#wordList .placeholder {
+  color: #818181;
+}
+
 #wordList .listPreview {
   display: flex;
   flex-wrap: wrap;
