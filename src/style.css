@@ -323,6 +323,7 @@ table#ranking .rank div:first-child {
   justify-content: space-between;
   align-items: center;
   /* padding: 0 1rem 0 0; */
+  cursor: pointer;
 }
 
 #wordList .listPreview {
@@ -334,10 +335,6 @@ table#ranking .rank div:first-child {
   margin-right: 1rem;
   overflow: hidden;
   text-transform: capitalize;
-}
-
-#wordList .dropdown-btn {
-  cursor: pointer;
 }
 
 #wordList .list {
