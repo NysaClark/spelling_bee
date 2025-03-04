@@ -427,6 +427,11 @@ table#ranking .currRank .rank :last-child {
   justify-content: space-between;
   align-items: center;
   /* padding: 0 1rem 0 0; */
+  cursor: pointer;
+}
+
+#wordList .placeholder {
+  color: #818181;
 }
 
 #wordList .listPreview {
@@ -438,10 +443,6 @@ table#ranking .currRank .rank :last-child {
   margin-right: 1rem;
   overflow: hidden;
   text-transform: capitalize;
-}
-
-#wordList .dropdown-btn {
-  cursor: pointer;
 }
 
 #wordList .list {
