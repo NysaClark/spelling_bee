@@ -84,8 +84,6 @@
 
 /* GAME */
 
-/*  */
-
 #game .section {
   width: 50vw;
   height: 100vh;
@@ -97,9 +95,106 @@
 }
 
 #board {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
 }
+
+#board .grid{
+  padding: 1rem 0;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+#hive {
+  --s: 100px;
+  /* controls the size */
+  --g: 5px;
+  /* gap */
+  display: grid;
+  margin: calc(var(--s) + var(--g));
+}
+
+#hive > .hive-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+
+  grid-area: 1/1;
+  width: var(--s);
+  aspect-ratio: 1.15;
+  /* background-color: #cecece; */
+  background-color: #e7e7e7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1));
+  cursor: pointer;
+  transition: .1s linear;
+}
+
+#hive >.hive-cell.center {
+  background-color: #f7da21;
+}
+
+#hive >.hive-cell:active {
+  z-index: 1;
+  --_t: .9;
+}
+
+#hive >.hive-cell:nth-child(2) {
+  --_y: calc(-100% - var(--g))
+}
+
+#hive >.hive-cell:nth-child(7) {
+  --_y: calc(100% + var(--g))
+}
+
+#hive >.hive-cell:nth-child(3),
+#hive >.hive-cell:nth-child(5) {
+  --_x: calc(-75% - .87*var(--g))
+}
+
+#hive >.hive-cell:nth-child(4),
+#hive >.hive-cell:nth-child(6) {
+  --_x: calc(75% + .87*var(--g))
+}
+
+#hive >.hive-cell:nth-child(3),
+#hive >.hive-cell:nth-child(4) {
+  --_y: calc(-50% - .5*var(--g))
+}
+
+#hive >.hive-cell:nth-child(5),
+#hive >.hive-cell:nth-child(6) {
+  --_y: calc(50% + .5* var(--g))
+}
+
+#board .btn-container{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#board .btn-container .btn{
+  background-color: white;
+  border: 1px solid #cecece;
+  color: black;
+  font-size: 1rem;
+  width: fit-content;
+}
+
+#board .btn-container .btn:active{
+  background-color: #cecece;
+}
+
 
 /* Rank */
 
@@ -123,7 +218,7 @@
   left: 0;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(177, 177, 177, 0.4);
   z-index: 100;
   cursor: default;
 }
@@ -132,11 +227,10 @@
   display: flex;
   background-color: white;
   flex-direction: column;
-  border: 1px solid black;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2rem;
   position: relative;
-
   max-width: 70vw;
 }
 
@@ -145,6 +239,11 @@
   right: 1rem;
   top: 1rem;
   cursor: pointer;
+}
+
+#rankModal .close svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 #rankModal .title {
@@ -172,9 +271,9 @@ table#ranking .currRank td {
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 } */
-table#ranking .currRank #icon{
+table#ranking .currRank #icon {
   font-size: 1.2rem;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
 }
 
 table#ranking .currRank .rank :first-child {
@@ -220,13 +319,14 @@ table#ranking .currRank {
   height: 55px;
 }
 
-table#ranking .currRank .progress.filled{
+table#ranking .currRank .progress.filled {
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-table#ranking .row.faded .rank, table#ranking .row.faded .minScore{
-  opacity: .3;
+table#ranking .row.faded .rank,
+table#ranking .row.faded .minScore {
+  opacity: 0.3;
 }
 
 table#ranking .currRank .progress.filled::before {
@@ -255,6 +355,10 @@ table#ranking .currRank .minScore::after {
 table#ranking .rank div:first-child {
   text-transform: capitalize;
   width: fit-content;
+}
+
+table#ranking .currRank .rank :last-child {
+  font-size: 0.8rem;
 }
 
 /* RANK STATUS */
@@ -386,5 +490,38 @@ table#ranking .rank div:first-child {
 
   #wordList.expanded {
     height: calc(100vh - 100px);
+  }
+
+  .modal #rankModal {
+    max-width: 90vw;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .modal #rankModal {
+    max-width: 100vw;
+    border-color: transparent;
+  }
+  #rankStatus .modal {
+    align-items: end;
+  }
+  table#ranking th {
+    font-size: 0.8rem;
+  }
+
+  table#ranking td {
+    font-size: 0.9rem;
+  }
+
+  table#ranking .currRank .rank :last-child {
+    font-size: 0.6rem;
+  }
+
+  #game #rankStatus {
+    margin: 0;
+    gap: 1rem;
+  }
+  #rankStatus #currRank {
+    font-size: 1.1rem;
   }
 }
