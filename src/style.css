@@ -496,6 +496,11 @@ table#ranking .currRank .rank :last-child {
   .modal #rankModal {
     max-width: 90vw;
   }
+
+  #board {
+    margin-top: 2rem;
+   height: fit-content;
+  }
 }
 
 @media screen and (max-width: 426px) {
@@ -524,5 +529,9 @@ table#ranking .currRank .rank :last-child {
   }
   #rankStatus #currRank {
     font-size: 1.1rem;
+  }
+
+  #hive {
+    --s: 90px;
   }
 }

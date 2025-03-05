@@ -1,46 +1,8 @@
 import React, {useState} from 'react'
 import RankModal from './RankModal'
 
-const RankStatus = ({ currPoints, currRank }) => {
+const RankStatus = ({ currPoints, currRank, ranks }) => {
   const [showModal, setShowModal] = useState(false)
-  const ranks = {
-    "beginner": {
-      id: 0,
-      points: 0,
-    },
-    "good start": {
-      id: 1,
-      points: 2,
-    },
-    "moving up": {
-      id: 2,
-      points: 4,
-    },
-    "good": {
-      id: 3,
-      points: 7,
-    },
-    "solid": {
-      id: 4,
-      points: 13,
-    },
-    "nice": {
-      id: 5,
-      points: 22,
-    },
-    "great": {
-      id: 6,
-      points: 35,
-    },
-    "amazing": {
-      id: 7,
-      points: 44,
-    },
-    "genius": {
-      id: 8,
-      points: 62,
-    },
-  }
 
   return (
     <div id='rankStatus' onClick={() => setShowModal(true)}>

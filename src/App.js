@@ -5,9 +5,6 @@ import Loading from "./Components/Loading";
 import Game from "./Components/Game";
 import Score from "./Components/Score";
 
-import gamesList from "./games.json";
-import pangramsList from "./pangrams.json";
-
 function App() {
   const [showStart, setShowStart] = useState(true);
   const [showGame, setShowGame] = useState(false);
@@ -17,19 +14,37 @@ function App() {
   const [middle, setMiddle] = useState("");
   const [dictionary, setDictionary] = useState([]);
   const [pangrams, setPangrams] = useState([]);
+  const [ranks, setRanks] = useState({})
+  // const [totalPoints, setTotalPoints] = useState(0);
 
   const [loading, setLoading] = useState(false);
+
+  const shuffle = () => {
+    const temp = [...letters];
+    for (let i = temp.length - 1; i > 0; i--) {
+      const rand = Math.floor(Math.random() * (i + 1));
+      [temp[i], temp[rand]] = [temp[rand], temp[i]];
+    }
+    // return temp;
+    setLetters(temp)
+  }
 
   const startGame = () => {
     setShowStart(false);
     setLoading(true);
 
-    const randomGame = gamesList[Math.floor(Math.random() * 17589)]
-  
-    setLetters(randomGame.char)
-    setMiddle(randomGame.middle)
-    setDictionary(randomGame.dictionary)
-    setPangrams(pangramsList[randomGame.id.split("_")[0]]);
+    fetch("https://spelling-bee-api-jy7l.onrender.com")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        const {letters, middle, dictionary, pangrams, ranks} = data;
+        setLetters(letters)
+        setMiddle(middle)
+        setDictionary(dictionary)
+        setPangrams(pangrams)
+        setRanks(ranks)
+        // setTotalPoints(totalPoints)
+      })
 
     setShowGame(true);
     setLoading(false);
@@ -39,7 +54,7 @@ function App() {
     <div id="container">
       {loading && <Loading />}
       { showStart && <Start startGame={startGame} /> }
-      { showGame && <Game />}
+      { showGame && <Game dictionary={dictionary} pangrams={pangrams} letters={letters} shuffle={shuffle} middle={middle} ranks={ranks} />}
       { showScore && <Score />}
     </div>
   );
