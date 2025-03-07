@@ -29,14 +29,14 @@ function App() {
     setLetters(temp)
   }
 
-  const startGame = () => {
+  const startGame = async () => {
     setShowStart(false);
     setLoading(true);
 
-    fetch("https://spelling-bee-api-jy7l.onrender.com")
+    await fetch("https://spelling-bee-api-jy7l.onrender.com")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         const {letters, middle, dictionary, pangrams, ranks} = data;
         setLetters(letters)
         setMiddle(middle)
@@ -44,6 +44,8 @@ function App() {
         setPangrams(pangrams)
         setRanks(ranks)
         // setTotalPoints(totalPoints)
+      }).catch((err) => {
+        console.log(err)
       })
 
     setShowGame(true);

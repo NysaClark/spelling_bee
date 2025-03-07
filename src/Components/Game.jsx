@@ -3,9 +3,9 @@ import RankStatus from './Game/RankStatus'
 import WordList from './Game/WordList'
 import Board from './Game/Board'
 
-const Game = ({letters, shuffle, middle, ranks}) => {
+const Game = ({letters, shuffle, middle, ranks, dictionary, pangrams}) => {
   const [currRank, setCurrRank] = useState("beginner");
-  const [currPoints, setCurrPoints] = useState(1);
+  const [currPoints, setCurrPoints] = useState(0);
 
   const [expanded, setExpanded] = useState(false);
 
@@ -19,7 +19,7 @@ const Game = ({letters, shuffle, middle, ranks}) => {
         <WordList expanded={expanded} setExpanded={setExpanded} wordsFound={wordsFound} />
       </div>
       <div className="section">
-        <Board middle={middle} letters={letters} shuffle={shuffle} />
+        <Board middle={middle} letters={letters} shuffle={shuffle} dictionary={dictionary} pangrams={pangrams} />
       </div>
     </div>
   )
