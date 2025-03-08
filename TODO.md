@@ -5,28 +5,30 @@
   - &#x2612; Subtitle
   - &#x2612; Play Btn
 - &#x2610; Game Page
-  - &#x2610; Ranking Status (Beginner, Getting Started, etc)
-    - &#x2610; (on click) Rankings Modal
-      - &#x2610; Title
-      - &#x2610; Subtitle
-      - &#x2610; Tank Table
-      - &#x2610; Current Rank w/ Points till next & points till Genius
+  - &#x2612; Ranking Status (Beginner, Getting Started, etc)
+    - &#x2612; (on click) Rankings Modal
+      - &#x2612; Title
+      - &#x2612; Subtitle
+      - &#x2612; Tank Table
+      - &#x2612; Current Rank w/ Points till next & points till Genius
     - &#x2612; Your words... OR Most Recent words (dropdown)
       - &#x2612; You have found x words (default)
       - &#x2612; columns of words
-  - Board
-    - toaster message & points
-    - word display
-      - flashing cursor ugh
-      - highlight required letter
-    - circle of letters (7 letters & 1 is required)
-    - buttons
-      - Delete (letter)
-      - Refresh
-      - Enter
-[] Scoreboard (once Genius is reached)
-    - Congrats Message
-    - Total # of words found
-    - Total Points
-    - Continue btn (until all words are found)  
-[] Work out Point System
+  - &#x2612; Board
+    - &#x2612; toaster message & points
+    - &#x2612; word display
+      - &#x2612; flashing cursor
+      - &#x2612; highlight required letter
+    - &#x2612; circle of letters (7 letters & 1 is required)
+    - &#x2612; buttons
+      - &#x2612; Delete (letter)
+      - &#x2612; Refresh
+      - &#x2612; Enter
+- &#x2610; Scoreboard Modal (Once total points is reached)
+    - &#x2610; Congrats Message (Queen Bee)
+    - &#x2610; Total # of words found
+    - &#x2610; Current Total Points
+    <!-- - &#x2610; Keep playing
+    OR --> 
+    - &#x2610; New Game
+- &#x2612; Work out Point System

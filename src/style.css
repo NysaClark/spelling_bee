@@ -37,6 +37,20 @@
   padding: 0 1rem;
 }
 
+#scoreboard{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(177, 177, 177, 0.4);
+  z-index: 100;
+  cursor: default;
+}
+
 /* START PAGE */
 
 #start .title {
@@ -228,7 +242,9 @@ text-transform: uppercase;
 .Toastify__close-button{
   display: none;
 }
-
+.Toastify__toast-icon{
+  display: none;
+}
 #board .grid {
   padding: 1rem 0;
   width: 100%;
@@ -315,6 +331,7 @@ text-transform: uppercase;
   color: black;
   font-size: 1rem;
   width: fit-content;
+  transition: background-color .5s linear;
 }
 
 #board .btn-container .btn:active {
@@ -585,6 +602,9 @@ table#ranking .currRank .rank :last-child {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: start;
+  /* TODO style scroll */
+  overflow-x: scroll;
+  scrollbar-width: none;
 }
 
 #wordList .list .word {
@@ -595,8 +615,6 @@ table#ranking .currRank .rank :last-child {
   border-bottom: 1px solid #cecece;
 }
 
-/* TODO */
-/* SCROLL WHEN LIST EXCEEDS # COLUMNS */
 
 @media screen and (max-width: 768px) {
   #container {
@@ -664,5 +682,10 @@ table#ranking .currRank .rank :last-child {
   #board #cursor {
     width: 1px;
     height: 60%;
+  }
+
+  #wordList .list.expanded {
+    gap: 1.5rem;
+    height: 98%;
   }
 }

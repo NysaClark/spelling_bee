@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
-const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
+const Board = ({ middle, letters, shuffle, dictionary, pangrams, wordsFound, setWordsFound, setCurrPoints }) => {
   const [userInput, setUserInput] = useState([]);
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-  const handleInput = (key) => {
+  const handleInput = (event) => {
 
-    if (alphabet.includes(key.toLowerCase())) {
+    if (alphabet.includes(event.key.toLowerCase())) {
       if (userInput.length > 20) {
         toast('Too long!', {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 1000,
           hideProgressBar: true,
           closeOnClick: false,
           pauseOnHover: false,
@@ -22,16 +22,17 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
 
         setUserInput([])
       }
-      setUserInput((prev) => [...prev, key])
-    } else if (key === "Backspace") {
+      setUserInput((prev) => [...prev, event.key])
+    } else if (event.key === "Backspace") {
       handleDelete()
-    } else if (key === "Enter") {
+    } else if (event.key === "Enter") {
+      event.preventDefault()
       handleSubmit();
     }
   };
 
   useEffect(() => {
-    const handleKeyPress = (event) => handleInput(event.key);
+    const handleKeyPress = (event) => handleInput(event);
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
@@ -52,69 +53,77 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
         if (userInput.filter((char) => char === middle).length !== 0) {
           // check if word is in dictionary
           if (dictionary.includes(userInput.join(""))) {
-
-            if (userInput.length > 4) {
-              pts += userInput.length
-            } else {
-              pts += 1;
-            }
-
-            // check if word is in the panagrams arr
-            if (pangrams.includes(userInput.join(""))) {
-              // +7 extra points
-              pts += 7;
-              // message popup "Panagram!"
-              // toast(`Panagram! ${pts}+`, {
-              //   position: "top-center",
-              //   autoClose: 2000,
-              //   hideProgressBar: true,
-              //   closeOnClick: false,
-              //   pauseOnHover: false,
-              //   draggable: false,
-              //   progress: undefined,
-              //   theme: "light",
-              // });
-
-              // ! Get rid of icon
-              toast.warn(`Panagram! ${pts}+`, {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: false,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "colored",
-              });
-            } else { //else (not panagram but in wordlist)
-              // +points
-              let msg = "Good";
-
+            // check that word hasn't already been submitted
+            if(!wordsFound.includes(userInput.join(""))){
               if (userInput.length > 4) {
-                msg = "Great";
-                if (userInput.length >= 7) {
-                  msg = "Excellent";
-                }
+                pts += userInput.length
+              } else {
+                pts += 1;
               }
 
-              toast(`${msg}! ${pts}+`, {
+              // check if word is in the pangrams arr
+              if (pangrams.includes(userInput.join(""))) {
+                // +7 extra points
+                pts += 7;
+
+                toast.warn(`Panagram! ${pts}+`, {
+                  position: "top-center",
+                  autoClose: 1000,
+                  hideProgressBar: true,
+                  closeOnClick: false,
+                  pauseOnHover: false,
+                  draggable: false,
+                  progress: undefined,
+                  theme: "colored",
+                });
+              } else { //else (not pangrams but in word list)
+                // +points
+                
+                // message popup "Good! / Great! / Excellent! etc"
+                // message based on word length
+                let msg = "Good";
+
+                if (userInput.length > 4) {
+                  msg = "Great";
+                  if (userInput.length >= 6) {
+                    msg = "Excellent";
+                  }
+                }
+
+                toast(`${msg}! ${pts}+`, {
+                  position: "top-center",
+                  autoClose: 1000,
+                  hideProgressBar: true,
+                  closeOnClick: false,
+                  pauseOnHover: false,
+                  draggable: false,
+                  progress: undefined,
+                  theme: "light",
+                });
+              }
+
+              //add to wordlist
+              setWordsFound((prev) => [...prev, userInput.join("").toLowerCase()])
+
+              //increase currPoints
+              setCurrPoints(prev => prev += pts)
+
+            }else{ //else (word has already been submitted)
+              toast('Already found!', {
                 position: "top-center",
-                autoClose: 2000,
+                autoClose: 1000,
                 hideProgressBar: true,
                 closeOnClick: false,
                 pauseOnHover: false,
                 draggable: false,
                 progress: undefined,
-                theme: "light",
+                theme: "dark",
               });
-              // message popup "Good! / Great! / Excellent! etc"
-              // message based on word length
             }
           } else {//else (not in word list / not valid word)
-            //message popup "Not in word list"
             toast('Not in word list!', {
               position: "top-center",
-              autoClose: 2000,
+              autoClose: 1000,
               hideProgressBar: true,
               closeOnClick: false,
               pauseOnHover: false,
@@ -124,10 +133,9 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
             });
           }
         } else { //else (missing middle letter)
-          //message popup "Missing center letter"
           toast('Missing center letter!', {
             position: "top-center",
-            autoClose: 2000,
+            autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: false,
             pauseOnHover: false,
@@ -139,7 +147,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
       } else { //else (bad letters)
         toast('Bad letters!', {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 1000,
           hideProgressBar: true,
           closeOnClick: false,
           pauseOnHover: false,
@@ -151,7 +159,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
     } else { //else (too short < 4)
       toast('Too short!', {
         position: "top-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: false,
@@ -168,7 +176,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
     <div id="board">
       <ToastContainer
         position="top-center"
-        autoClose={2000}
+        autoClose={1000}
         hideProgressBar
         newestOnTop={false}
         closeOnClick={false}
@@ -192,7 +200,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
       <div className="grid">
         <div id="hive">
           <div
-            onClick={() => handleInput(middle)}
+            onClick={() => handleInput({key: middle})}
             // onClick={() => setUserInput((prev) => [...prev, middle])}
             className="hive-cell center"
           >
@@ -202,7 +210,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams }) => {
             return (
               <div
                 key={index}
-                onClick={() => handleInput(letter)}
+                onClick={() => handleInput({key: letter})}
                 // onClick={() => setUserInput((prev) => [...prev, letter])}
                 className="hive-cell"
               >

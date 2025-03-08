@@ -15,7 +15,7 @@ function App() {
   const [dictionary, setDictionary] = useState([]);
   const [pangrams, setPangrams] = useState([]);
   const [ranks, setRanks] = useState({})
-  // const [totalPoints, setTotalPoints] = useState(0);
+  const [totalPoints, setTotalPoints] = useState(0);
 
   const [loading, setLoading] = useState(false);
 
@@ -37,13 +37,13 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        const {letters, middle, dictionary, pangrams, ranks} = data;
+        const {letters, middle, dictionary, pangrams, ranks, totalPoints} = data;
         setLetters(letters)
         setMiddle(middle)
         setDictionary(dictionary)
         setPangrams(pangrams)
         setRanks(ranks)
-        // setTotalPoints(totalPoints)
+        setTotalPoints(totalPoints)
       }).catch((err) => {
         console.log(err)
       })
@@ -56,7 +56,19 @@ function App() {
     <div id="container">
       {loading && <Loading />}
       { showStart && <Start startGame={startGame} /> }
-      { showGame && <Game dictionary={dictionary} pangrams={pangrams} letters={letters} shuffle={shuffle} middle={middle} ranks={ranks} />}
+      { showGame &&
+        <Game
+          dictionary={dictionary}
+          pangrams={pangrams}
+          letters={letters}
+          shuffle={shuffle}
+          middle={middle}
+          ranks={ranks}
+          totalPoints={totalPoints}
+          // setShowGame={setShowGame}
+          setShowScore={setShowScore}
+        />
+      }
       { showScore && <Score />}
     </div>
   );
