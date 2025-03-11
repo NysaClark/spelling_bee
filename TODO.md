@@ -4,7 +4,7 @@
   - &#x2612; Spelling Bee
   - &#x2612; Subtitle
   - &#x2612; Play Btn
-- &#x2610; Game Page
+- &#x2612; Game Page
   - &#x2612; Ranking Status (Beginner, Getting Started, etc)
     - &#x2612; (on click) Rankings Modal
       - &#x2612; Title
@@ -24,11 +24,11 @@
       - &#x2612; Delete (letter)
       - &#x2612; Refresh
       - &#x2612; Enter
-- &#x2610; Scoreboard Modal (Once total points is reached)
-    - &#x2610; Congrats Message (Queen Bee)
-    - &#x2610; Total # of words found
-    - &#x2610; Current Total Points
-    <!-- - &#x2610; Keep playing
-    OR --> 
-    - &#x2610; New Game
+- &#x2610; Scoreboard Modal (Once Genius / total points is reached)
+    - &#x2610; Logo/Icon
+    - &#x2612; Congrats Message (Queen Bee / Genius)
+    - &#x2612; Total # of words found
+    - &#x2612; Current Total Points
+    - &#x2612; Keep playing 
+    - &#x2612; New Game
 - &#x2612; Work out Point System

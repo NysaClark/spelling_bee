@@ -37,7 +37,7 @@
   padding: 0 1rem;
 }
 
-#scoreboard{
+#scoreboard {
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -214,11 +214,16 @@ text-transform: uppercase;
   }
 }
 
+#board #placeholder{
+  font-size: 2rem;
+  color: #cecece;
+}
+
 #board .char {
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
-  margin: .5px;
+  margin: 0.5px;
 }
 #board .char.middle {
   color: #f7da21;
@@ -227,22 +232,22 @@ text-transform: uppercase;
   color: #dcdcdc;
 }
 
-.Toastify{
+.Toastify {
   position: relative;
 }
-.Toastify__toast-container--top-center{
+.Toastify__toast-container--top-center {
   position: absolute;
   top: -3rem;
 }
-.Toastify__toast{
+.Toastify__toast {
   width: 180px;
   min-height: 3rem;
   justify-content: center;
 }
-.Toastify__close-button{
+.Toastify__close-button {
   display: none;
 }
-.Toastify__toast-icon{
+.Toastify__toast-icon {
   display: none;
 }
 #board .grid {
@@ -331,7 +336,7 @@ text-transform: uppercase;
   color: black;
   font-size: 1rem;
   width: fit-content;
-  transition: background-color .5s linear;
+  transition: background-color 0.5s linear;
 }
 
 #board .btn-container .btn:active {
@@ -376,14 +381,14 @@ text-transform: uppercase;
   max-width: 75vw;
 }
 
-#rankModal .close {
+.close {
   position: absolute;
   right: 1rem;
   top: 1rem;
   cursor: pointer;
 }
 
-#rankModal .close svg {
+.close svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -615,6 +620,35 @@ table#ranking .currRank .rank :last-child {
   border-bottom: 1px solid #cecece;
 }
 
+/* Scoreboard */
+#scoreModal {
+  padding: 2rem;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+#scoreModal .title {
+ text-transform: capitalize;
+}
+#scoreModal .subtitle span {
+  font-weight: bold;
+ }
+
+#scoreboard .btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+#scoreboard .btn-container #newGame {
+ background-color: white;
+ color: black;
+}
 
 @media screen and (max-width: 768px) {
   #container {
@@ -639,7 +673,6 @@ table#ranking .currRank .rank :last-child {
   .modal #rankModal {
     max-width: 90vw;
   }
-  
 
   #board {
     margin-top: 2rem;

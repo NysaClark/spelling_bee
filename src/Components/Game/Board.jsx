@@ -6,7 +6,8 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams, wordsFound, set
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
   const handleInput = (event) => {
-
+    // console.log(event.key.toLowerCase())
+    // TODO accept capital letters
     if (alphabet.includes(event.key.toLowerCase())) {
       if (userInput.length > 20) {
         toast('Too long!', {
@@ -188,6 +189,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams, wordsFound, set
       // transition={Bounce}
       />
       <div id="inputBox">
+        
         {userInput.map((char, index) => {
           let isValid = letters.includes(char) || middle === char;
           let isMiddle = char === middle;
@@ -196,6 +198,7 @@ const Board = ({ middle, letters, shuffle, dictionary, pangrams, wordsFound, set
           )
         })}
         <span id="cursor"></span>
+        {!userInput.length && <span id="placeholder">Type or click</span>}
       </div>
       <div className="grid">
         <div id="hive">

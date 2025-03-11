@@ -3,32 +3,47 @@ import RankStatus from './Game/RankStatus'
 import WordList from './Game/WordList'
 import Board from './Game/Board'
 
-const Game = ({ letters, shuffle, middle, ranks, dictionary, pangrams, totalPoints, setShowScore }) => {
-  const [currRank, setCurrRank] = useState("beginner");
-  const [currPoints, setCurrPoints] = useState(0);
+const Game = ({ 
+  letters,
+  shuffle,
+  middle,
+  ranks,
+  dictionary,
+  pangrams,
+  totalPoints,
+  setShowScore, 
+  currRank,
+  setCurrRank,
+  setCurrPoints,
+  currPoints,
+  wordsFound,
+  setWordsFound,
+  continueGame
+}) => {
 
   const [expanded, setExpanded] = useState(false);
-
-  const [wordsFound, setWordsFound] = useState([
-  ])
 
   useEffect(() => {
     let newRank = "";
     Object.keys(ranks).forEach((rank) => {
       if (currPoints >= ranks[rank].points) {
-        newRank = rank
+        newRank = rank;
       }
-    })
+    });
 
     setCurrRank(newRank);
+   
 
-    if (currPoints >= totalPoints) { // reached total points game over!
-      // TODO
-      // setShowScore(true);
+    if (newRank === "genius" && !continueGame) {
+      // reached genius ask if they want to continue
+      setShowScore(true);
     }
 
-  }, [currPoints])
-
+    if (currPoints >= totalPoints) {
+      // reached total points game over!
+      setShowScore(true);
+    }
+  }, [currPoints]);
 
   return (
     <div id='game'>
