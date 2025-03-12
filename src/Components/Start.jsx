@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from "../bee-icon.png"
 
 const Start = ({ startGame }) => {
   return (
     <div id="start">
       <div className="logo">
-        Logo
+        <img src={logo} alt="Bee Logo" />
       </div>
       <h1 className="title">Spelling Bee</h1>
       <h2 className="subtitle">How many words can you make with 7 letters?</h2>
