@@ -46,7 +46,7 @@ function App() {
     await fetch("https://spelling-bee-api-jy7l.onrender.com")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const { letters, middle, dictionary, pangrams, ranks, totalPoints } =
           data;
         setLetters(letters);
